@@ -15,5 +15,15 @@ be sent to
 
     ~pkal/public-inbox@lists.sr.ht
 
+The site has been tested (to differing degrees) with the following
+browers:
+
+- GNU IceCat (91.7.0esr)
+- Mozilla Firefox (91.7.0esr)
+- eww (Emacs 29.0.50)
+- netsurf (3.10)
+- Google Chromium (99.0.4844.74)
+- Fennec F-Droid (98.2.0)
+
 [0] http://www.sbcl.org/
 [1] https://guix.gnu.org/
