@@ -86,8 +86,9 @@
   (:method ((query query))
     (with-slots (name question type) query
       (html
+       (:div
         ((:label :for name) (:princ-safe question) ": ")
-        ((:input :type type :name name)))))
+        ((:input :type type :name name))))))
   (:method ((details details))
     (with-slots (summary text) details
       (html
@@ -540,6 +541,34 @@ everyone can see what everyone else is doing.  The package uses"
           "Conflict-free replicated data types")
          " to synchronise the buffer state, without the need for a
 central server or service."))
+
+   (make-builtin-package
+    "rcirc" "IRC Client"
+    (par ((:a :href "https://en.wikipedia.org/wiki/Internet_Relay_Chat") "IRC")
+         " remains popular, especially among Emacs users. If
+you want to hang out in a chat room or need to contact a project
+you are having issues with, having a basic IRC configuration can
+be of use.")
+    (make-query :question "What IRC nick do you want to use?"
+                :name "rcirc-nick"
+                :type "text")
+    (lambda (req)
+      (when (< (emacs-version req) 28)
+        (format t "~2%;; Connect to Librea
+(setq rcirc-server-alist
+'((\"irc.libera.chat\" :channels (\"#emacs\")
+:port 6697 :encryption tls)))"))
+      (let ((nick (request-query-value "rcirc-nick" req)))
+        (when (string/= nick "")
+          (format t "~2%;; Set your IRC nick~%(setq rcirc-default-nick ~S)" nick))))
+    (make-conditional
+     :question "Indicate channel activity in the mode line?"
+     :code "(add-hook 'rcirc-mode-hook #'rcirc-track-minor-mode)"
+     :inverted t)
+    (make-conditional
+     :question "Hide less important messages like users joining or leaving?"
+     :code "(add-hook 'rcirc-mode-hook #'rcirc-omit-mode)"
+     :inverted t))
 
    (make-subsection "Text manipulation and navigation")
    "Since everything is just a text buffer in Emacs, general purpose
