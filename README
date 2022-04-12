@@ -1,0 +1,19 @@
+	EMACS CONFIGURATION GENERATOR
+
+Find here the source for an Emacs configuration generator website.  It
+is written in Common Lisp, and was tested using SBCL[0]. A live
+instance should be accessible via
+
+    https://emacs.amodernist.com/
+
+Using GNU Guix[1], you can start a server as follows:
+
+    guix shell --pure -CN sbcl cl-asdf sbcl-alexandria sbcl-aserve -- sbcl --script ecg.lisp --eval "(net.aserve:start :port 8080)"
+
+Questions, issues, complaints, comments, insults, patches, etc. should
+be sent to
+
+    ~pkal/public-inbox@lists.sr.ht
+
+[0] http://www.sbcl.org/
+[1] https://guix.gnu.org/

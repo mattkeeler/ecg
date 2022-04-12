@@ -1,0 +1,69 @@
+body {
+    font-size: 14pt;
+    line-height: 1.4;
+    max-width: max(90%, 80ch);
+    margin: 0 auto;
+    padding: 0 1em;
+}
+
+kbd, code, tt {
+    font-family: monospace, monospace;
+}
+
+.right {
+    float: right;
+}
+
+.option > img {
+    display: none;
+}
+
+.choice {
+    list-style: none;
+}
+
+.choice img {
+    display: none;
+}
+
+.choice input:checked ~ img {
+    display: inline-block;
+    float: right;
+    margin: 8px;
+    max-width: min(60ch, 50%);
+    border: 1px solid silver;
+}
+
+.package > .package-name {
+    float: right;
+    padding: 4px;
+    margin-top: -4px;
+    background: rgba(0.5,0.5,0.5,0.1);
+}
+
+.package .cond ~ label {
+    font-style: italic;
+}
+
+.package .cond ~ .dependent {
+    opacity: 0.5;
+}
+.package .cond ~ .dependent input {
+    pointer-events: none;
+}
+
+.package .cond:checked ~ .dependent {
+    opacity: initial;
+}
+.package .cond:checked ~ .dependent input {
+    pointer-events: initial;
+}
+
+.multicol {
+    column-width: 25ch;
+}
+
+footer {
+    text-align: right;
+    font-size: 80%;
+}
