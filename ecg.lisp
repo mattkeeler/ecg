@@ -98,8 +98,7 @@
     (with-slots (name question inverted) conditional
       (html
         ((:input :type "checkbox" :name name
-                 :if* inverted :checked
-                 ))
+                 :if* inverted :checked "on"))
         " " ((:label :for name) (:princ-safe question))
         :br)))
   (:method ((choice choice))
