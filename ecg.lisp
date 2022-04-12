@@ -541,16 +541,6 @@ everyone can see what everyone else is doing.  The package uses"
          " to synchronise the buffer state, without the need for a
 central server or service."))
 
-   (make-elpa-package
-    "devdocs" "Documentation client" 'gnu-elpa
-    (par "If you have friends using Emacs, this package might be of
-use if you need to work on the same files at the same time, so that
-everyone can see what everyone else is doing.  The package uses"
-         ((:a :href "https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type")
-          "Conflict-free replicated data types")
-         " to synchronise the buffer state, without the need for a
-central server or service."))
-
    (make-subsection "Text manipulation and navigation")
    "Since everything is just a text buffer in Emacs, general purpose
 utilities and commands have wide applicability.  This section suggests
