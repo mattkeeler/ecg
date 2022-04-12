@@ -30,6 +30,10 @@
   ;; TODO: Send a patch to AllegroServe to have these tags and mime
   ;;       types available by default.  Some of these seem to have
   ;;       already been updated, but not published?
+  (net.html.generator::def-std-html :header t nil)
+  (net.html.generator::def-std-html :main t nil)
+  (net.html.generator::def-std-html :aside t nil)
+  (net.html.generator::def-std-html :footer t nil)
   (net.html.generator::def-std-html :details t nil)
   (net.html.generator::def-std-html :summary t nil)
   (setf (gethash "svg" *mime-types*) "image/svg+xml"))
