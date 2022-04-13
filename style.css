@@ -1,3 +1,6 @@
+/* EMACS CONFIGURATION GENERATOR style sheet */
+
+/* General page style */
 body {
     font-size: 14pt;
     line-height: 1.4;
@@ -6,34 +9,32 @@ body {
     padding: 0 1em;
 }
 
+/* Fix monospace font size on Mozilla browers */
 kbd, code, tt {
     font-family: monospace, monospace;
 }
 
+/* Utility class for right-align elements (e.g. Emacs logo) */
 .right {
     float: right;
 }
 
-.option > img {
-    display: none;
-}
-
+/* Only display images when a choice is selected (e.g. Screenshots) */
 .choice {
     list-style: none;
 }
-
 .choice img {
     display: none;
-}
-
-.choice input:checked ~ img {
-    display: inline-block;
     float: right;
     margin: 8px;
     max-width: min(60ch, 50%);
     border: 1px solid silver;
 }
+.choice input:checked ~ img {
+    display: inline-block;
+}
 
+/* Indicate that a package is being configured. */
 .package > .package-name {
     float: right;
     padding: 4px;
@@ -41,17 +42,18 @@ kbd, code, tt {
     background: rgba(0.5,0.5,0.5,0.1);
 }
 
+/* Emphasise if a package can be enabled. */
 .package .cond ~ label {
     font-style: italic;
 }
 
+/* Only allow a package to be configured if selected */
 .package .cond ~ .dependent {
     opacity: 0.5;
 }
 .package .cond ~ .dependent input {
     pointer-events: none;
 }
-
 .package .cond:checked ~ .dependent {
     opacity: initial;
 }
@@ -59,10 +61,12 @@ kbd, code, tt {
     pointer-events: initial;
 }
 
+/* Utility class for multi-column lists (e.g. the "Further links" section) */
 .multicol {
     column-width: 25ch;
 }
 
+/* Format the footer */
 footer {
     text-align: right;
     font-size: 80%;
