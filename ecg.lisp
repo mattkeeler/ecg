@@ -757,7 +757,9 @@ links, that might be of use")
        (:li ((:a :href "https://mail.gnu.org/mailman/listinfo/help-gnu-emacs")
              (:tt "help-gnu-emacs") " mailing list")))
       (:p "Also consider joining the "
-          (:tt "#emacs") " channel on "
+          ((:a :href "https://www.emacswiki.org/emacs/EmacsChannel")
+           (:tt "#emacs"))
+          " channel on "
           ((:a :href "https://libera.chat/") "Libera Chat") "."))
      (:footer
       ((:abbr :title "Emacs Configuration Generator") "ECG")
