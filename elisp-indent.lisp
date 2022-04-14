@@ -293,6 +293,5 @@
 		  :adjustable t)))
        (with-output-to-string (*standard-output* ,str)
 	 ,@body)
-       (format *debug-io* "~S" ,str)
        (with-input-from-string (*standard-input* ,str)
 	 (indent-lines)))))
