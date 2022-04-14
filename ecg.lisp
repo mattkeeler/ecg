@@ -262,7 +262,7 @@ version)."
    (lambda (req)
      (format t ";;; Personal configuration -*- lexical-binding: t -*-")
      (format t "~2%;; Save the contents of this file under ~A"
-	     (if (< (emacs-version req 27) 27)
+	     (if (< (emacs-version req) 27)
                  "~/.config/emacs/init.el"
                  "~/.emacs.d/init.el"))
      (format t "~%;; Do not forget to use Emacs' built-in help system!"))
