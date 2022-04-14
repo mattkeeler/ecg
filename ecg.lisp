@@ -61,22 +61,29 @@
     (prog1 (format nil "id-~d" counter)
       (incf counter))))
 
+;; Based on a post by Peter Norvig in response to
+;; https://groups.google.com/g/comp.lang.lisp/c/-W1FeuHq0DI
+(defun parse-float (str)
+  "Return a fraction read from string containing a float."
+  (multiple-value-bind (integer i) (parse-integer str :junk-allowed t)
+    (multiple-value-bind (frac j) (parse-integer str :start (+ i 1))
+      (+ integer (/ frac (expt 10 (- j i 1)))))))
+
 (defparameter *default-version* 27
   "Without any further information, what version do we assume?")
 (defun emacs-version (req)
   (let ((query (request-query-value "emacs-version" req)))
-    (if (string= query "")
-        *default-version*
-        (parse-integer query))))
+    (if (string= query "") *default-version* (parse-float query))))
 
 (defstruct (section (:constructor make-section (title))) title)
 (defstruct (subsection (:constructor make-subsection (title))) title)
 (defstruct query question (name (next-name)) type)
+(defstruct single-choice question (name (next-name)) alternatives default)
 (defstruct details summary text)
 (defstruct conditional question (name (next-name)) code comment inverted)
 (defstruct choice question (name (next-name)) options comment)
 (defstruct choice-option
-  text value code image (version *default-version*))
+  text value code image version)
 (defstruct (elpa-package
              (:constructor make-elpa-package
                            (pkg-name generic-name archive
@@ -106,6 +113,18 @@
        (:div
         ((:label :for name) (:princ-safe question) ": ")
         ((:input :type type :name name))))))
+  (:method ((query single-choice))
+    (with-slots (name question default alternatives) query
+      (assert (not (null alternatives)))
+      (html
+	(:div
+         ((:label :for name) (:princ-safe question) ": ")
+         ((:select :name name)
+	  (dolist (alt alternatives)
+	    (html
+	      ((:option :if* (equal alt default) :selected "yes"
+			:value alt)
+	       (:princ-safe alt)))))))))
   (:method ((details details))
     (with-slots (summary text) details
       (html
@@ -227,16 +246,23 @@
    (make-section "General")
    "Some options might depend on the version of Emacs you have installed.
 If you know what version you will be using, set it here.  Otherwise it
-will be assumed that you have Emacs 27 (the currently most widely used
-version) installed."
-   (make-query :question "What Emacs version do you have installed"
+will be assumed that you have Emacs 27.1  installed (currently most widely available
+version)."
+   (make-single-choice
+    :question "What Emacs version do you have installed"
                :name "emacs-version"
-               :type "number")
-
+    :alternatives '("29.0"
+		    "28.1"
+		    "27.2" "27.1"
+		    "26.3" "26.2" "26.1"
+		    "26.3" "26.2" "26.1"
+		    "25.3" "25.2" "25.1"
+		    "24.5" "24.4" "24.3")
+    :default "27.1")
    (lambda (req)
      (format t ";;; Personal configuration -*- lexical-binding: t -*-")
      (format t "~2%;; Save the contents of this file under ~A"
-             (if (< (emacs-version req) 27)
+	     (if (< (emacs-version req 27) 27)
                  "~/.config/emacs/init.el"
                  "~/.emacs.d/init.el"))
      (format t "~%;; Do not forget to use Emacs' built-in help system!"))
