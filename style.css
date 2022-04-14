@@ -31,7 +31,7 @@ kbd, code, tt {
     border: 1px solid silver;
 }
 .choice input:checked ~ img {
-    display: inline-block;
+    display: block;
 }
 
 /* Indicate that a package is being configured. */
@@ -70,4 +70,20 @@ kbd, code, tt {
 footer {
     text-align: right;
     font-size: 80%;
+    margin-bottom: 1em;
+}
+
+/* mobile version */
+@media only screen and (max-width: 600px) {
+    /* hide the Emacs logo at the top of the page */
+    img.right {
+	display: none;
+    }
+
+    /* display images right below the selection */
+    .choice img {
+	float: none;
+	margin: 8px;
+	max-width: 100%;
+    }
 }
