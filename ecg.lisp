@@ -271,7 +271,11 @@ version)."
        (format t "~2%;; Add the NonGNU ELPA package archive")
        (format t "~%(require 'package)")
        (format t "~%(add-to-list 'package-archives")
-       (format t "  '(\"nongnu\" . \"https://elpa.nongnu.org/nongnu/\"))")))
+       (format t "  '(\"nongnu\" . \"https://elpa.nongnu.org/nongnu/\"))"))
+     (when (< (emacs-version req) 26.3)
+       (format t "~2%;; Fix TLS issues when contacting ELPA")
+       (format t "~%;; See https://debbugs.gnu.org/cgi/bugreport.cgi?bug=34341")
+       (format t "~%(setq gnutls-algorithm-priority \"NORMAL:-VERS-TLS1.3\")")))
 
    (make-subsection "Appearance")
    "You might use a custom theme for aesthetic reasons or because you have
