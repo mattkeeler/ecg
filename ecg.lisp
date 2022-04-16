@@ -753,6 +753,11 @@ pick-and-choose what they would like to start with and provide a
 template to build on.  Note that you will be suggested a few packages
 that are downloaded over the internet, from the ELPA ("
           (:q "Emacs Lisp package archive") ") repositories.")
+      (:blockquote
+       (:strong "Note:") "This site is still experimental, and
+there is a lot more that can be done.  See "
+       ((:a :href "http://amodernist.com/texts/ecg.html") "this article")
+       " for more details.")
       (:p "So if interested, fill out the form below and"
           " have a configuration file generated.")
       :hr)
