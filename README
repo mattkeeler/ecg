@@ -8,7 +8,7 @@ instance should be accessible via
 
 Using GNU Guix[1], you can start a server as follows:
 
-    guix shell --pure -CN sbcl cl-asdf sbcl-alexandria sbcl-aserve -- sbcl --load ecg.lisp --eval "(net.aserve:start :port 8080)"
+    guix shell --pure -CN sbcl sbcl-alexandria sbcl-aserve -- sbcl --load ecg.lisp --eval "(net.aserve:start :port 8080)"
 
 Questions, issues, complaints, comments, insults, patches, etc. should
 be sent to
