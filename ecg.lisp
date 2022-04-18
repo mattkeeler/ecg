@@ -368,7 +368,8 @@ popular package that implements this kind of interaction."))
      :code "(vertico-mode t)"
      :inverted t)
     (make-conditional
-     :question "Display completions horizontally, instead of vertically?"
+    :question "Display completions horizontally (which saves space),
+instead of vertically (which might be easier to read)?"
      :comment "Enable horizontal completion"
      :code "(vertico-flat-mode t)")
     (make-conditional
