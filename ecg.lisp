@@ -604,7 +604,7 @@ extensions that are not distributed with Org by default.")))
     "crdt" "Collaborative Editing" 'gnu-elpa
     (par "If you have friends using Emacs, this package might be of
 use if you need to work on the same files at the same time, so that
-everyone can see what everyone else is doing.  The package uses"
+everyone can see what everyone else is doing.  The package uses "
          ((:a :href "https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type")
           "Conflict-free replicated data types")
          " to synchronise the buffer state, without the need for a
