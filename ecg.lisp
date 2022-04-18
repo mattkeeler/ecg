@@ -582,7 +582,9 @@ adding this package might be convenient."))
           " can be used for
 anything from managing apartments, writing manuals, literate programs
 or executing code like a programming notebook.")
-     (par "It is enabled by default, but you can also fetch a newer version."))
+    (par "While Org Mode is bundled in by default, you can decide
+to fetch a new newer version that what is provided by default by
+your Emacs installation."))
     (make-conditional
      :question "Add binding to store links?"
      :code "(global-set-key (kbd \"C-c l\") #'org-store-link)")
