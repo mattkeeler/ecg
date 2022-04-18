@@ -268,7 +268,7 @@ version)."
      (format t "~%;; Do not forget to use Emacs' built-in help system:
 ;; Use C-h C-h to get an overview of all help commands.  All you
 ;; need to know about Emacs (what commands exist, what functions do,
-;; what variables specify), the help system can provide.")))
+;; what variables specify), the help system can provide."))
 
    (lambda (req)
      (when (< (emacs-version req) 28)
