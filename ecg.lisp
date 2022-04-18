@@ -265,7 +265,11 @@ version)."
 	     (if (< (emacs-version req) 27)
                  "~/.config/emacs/init.el"
                  "~/.emacs.d/init.el"))
-     (format t "~%;; Do not forget to use Emacs' built-in help system!"))
+     (format t "~%;; Do not forget to use Emacs' built-in help system:
+;; Use C-h C-h to get an overview of all help commands.  All you
+;; need to know about Emacs (what commands exist, what functions do,
+;; what variables specify), the help system can provide.")))
+
    (lambda (req)
      (when (< (emacs-version req) 28)
        (format t "~2%;; Add the NonGNU ELPA package archive")
