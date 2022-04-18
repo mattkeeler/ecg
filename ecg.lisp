@@ -326,6 +326,20 @@ with Emacs, that you might be interested in."
             :version version
             :image (format nil "/images/~a.svg" theme)))))
 
+  ;; FIXME: There should be a way to extend this query to make use of
+  ;; `document.fonts' [0] if Javascript is available.
+  ;;
+  ;; [0] https://developer.mozilla.org/en-US/docs/Web/API/Document/fonts
+  (make-query :question "What Font do you want to use by default?"
+	      :name "default-font-face"
+	      :type "text")
+  (lambda (req)
+    (let ((font (request-query-value "default-font-face" req)))
+      (when (string/= font "")
+	(format t "~2%;; Set default font face
+(set-face-attribute 'default nil :font \"~A\")"
+		font))))
+
    "By default Emacs has a few GUI elements enabled.  Some prefer to disable these,
 as they do everything using the keyboard.  Beginners should think twice about doing
 this, as the GUI (especially the menu bar) provide useful pointers."
