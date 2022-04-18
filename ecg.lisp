@@ -117,14 +117,14 @@
     (with-slots (name question default alternatives) query
       (assert (not (null alternatives)))
       (html
-	(:div
+        (:div
          ((:label :for name) (:princ-safe question) ": ")
          ((:select :name name)
-	  (dolist (alt alternatives)
-	    (html
-	      ((:option :if* (equal alt default) :selected "yes"
-			:value alt)
-	       (:princ-safe alt)))))))))
+          (dolist (alt alternatives)
+            (html
+              ((:option :if* (equal alt default) :selected "yes"
+                        :value alt)
+               (:princ-safe alt)))))))))
   (:method ((details details))
     (with-slots (summary text) details
       (html
@@ -252,17 +252,17 @@ version)."
     :question "What Emacs version do you have installed"
                :name "emacs-version"
     :alternatives '("29.0"
-		    "28.1"
-		    "27.2" "27.1"
-		    "26.3" "26.2" "26.1"
-		    "26.3" "26.2" "26.1"
-		    "25.3" "25.2" "25.1"
-		    "24.5" "24.4" "24.3")
+                    "28.1"
+                    "27.2" "27.1"
+                    "26.3" "26.2" "26.1"
+                    "26.3" "26.2" "26.1"
+                    "25.3" "25.2" "25.1"
+                    "24.5" "24.4" "24.3")
     :default "27.1")
    (lambda (req)
      (format t ";;; Personal configuration -*- lexical-binding: t -*-")
      (format t "~2%;; Save the contents of this file under ~A"
-	     (if (< (emacs-version req) 27)
+             (if (< (emacs-version req) 27)
                  "~/.config/emacs/init.el"
                  "~/.emacs.d/init.el"))
      (format t "~%;; Do not forget to use Emacs' built-in help system:
@@ -331,14 +331,14 @@ with Emacs, that you might be interested in."
   ;;
   ;; [0] https://developer.mozilla.org/en-US/docs/Web/API/Document/fonts
   (make-query :question "What Font do you want to use by default?"
-	      :name "default-font-face"
-	      :type "text")
+              :name "default-font-face"
+              :type "text")
   (lambda (req)
     (let ((font (request-query-value "default-font-face" req)))
       (when (string/= font "")
-	(format t "~2%;; Set default font face
+        (format t "~2%;; Set default font face
 (set-face-attribute 'default nil :font \"~A\")"
-		font))))
+                font))))
 
    "By default Emacs has a few GUI elements enabled.  Some prefer to disable these,
 as they do everything using the keyboard.  Beginners should think twice about doing
