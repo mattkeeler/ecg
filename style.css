@@ -5,7 +5,7 @@ body {
     font-size: 14pt;
     line-height: 1.4;
     max-width: max(90%, 80ch);
-    margin: 1m auto;
+    margin: 1em auto;
     padding: 0 1em;
 }
 
