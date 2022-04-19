@@ -431,6 +431,40 @@ make use of narrowing completion.")
 read-file-name-completion-ignore-case t
 completion-ignore-case t)")
 
+   "If you prefer to see the line numbers at a quick glance,
+you might be interested want to enable line numbering.  It is
+disabled by default, because you don't really need it most of
+the time.  Also note that you might not want to have it enabled
+everywhere, as often the content of a text buffer isn't just a
+text file you might address line by line, but documentation or
+interactive applications such as a shell/REPL.  It is therefore
+perhaps better to only enable line numbering when interacting
+with program code."
+
+   (make-single-choice
+    :question "Enable inline line numbering?"
+    :name "line-numbering"
+    :alternatives '(("No, keep it disabled" . "no")
+                    ("Yes, but only in programming modes" . "prog")
+                    ("Yes, enable it everywhere" . "yes"))
+    :default "no"
+    :radiop t)
+   (lambda (req)
+     (let ((dln (request-query-value "line-numbering" req)))
+       (cond
+         ((string= dln "yes")
+          (format t "~2%;; Enable line numbering by default~%")
+          (if (< (emacs-version req) 26)
+              (format t "(global-linum-mode t)")
+              (format t "(global-display-line-numbers-mode t)")))
+         ((string= dln "prog")
+          (format t "~2%;; Enable line numbering in `prog-mode'")
+          (format t "~%(add-hook 'prog-mode-hook #'")
+          (if (< (emacs-version req) 26)
+              (format t "linum-mode")
+              (format t "display-line-numbers-mode"))
+          (format t ")")))))
+
    "Do you want Emacs to automatically add the closing parentheses,
 when you insert the opening ones?  This would also apply to brackets
 of all sorts, quotes and in some cases additional constructs depending
