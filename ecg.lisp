@@ -738,7 +738,12 @@ with Emacs bindings, enabling this might help overcome your initial difficulties
 mistakenly used instead of Emacs.  Some have sadly gotten used to the
 sinful ways, and prefer the " (:q "modal")
          " approach to Emacs default bindings.  If you too are affected by
-this curse, this package might help."))
+this curse, this package might help.")
+    (make-conditional
+     :question "Enabled by default?"
+     :comment "Enable Vim emulation"
+     :code "(evil-mode t)"
+     :inverted t))
 
    (make-elpa-package
     "brief" "Brief Emulation" 'gnu-elpa
