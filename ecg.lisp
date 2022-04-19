@@ -634,7 +634,7 @@ adding this package might be convenient."))
      (par "The well known markup format for Emacs, "
           ((:a :href "https://orgmode.org/") "Org Mode")
           " can be used for
-anything from managing apartments, writing manuals, literate programs
+anything from managing appointments, writing manuals, literate programs
 or executing code like a programming notebook.")
      (par "While Org Mode is bundled in by default, you can decide
 to fetch a new newer version that what is provided by default by
