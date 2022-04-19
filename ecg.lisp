@@ -78,7 +78,7 @@
 (defstruct (section (:constructor make-section (title))) title)
 (defstruct (subsection (:constructor make-subsection (title))) title)
 (defstruct query question (name (next-name)) type)
-(defstruct single-choice question (name (next-name)) alternatives default)
+(defstruct single-choice question (name (next-name)) alternatives default radiop)
 (defstruct details summary text)
 (defstruct conditional question (name (next-name)) code comment inverted)
 (defstruct choice question (name (next-name)) options comment)
@@ -114,17 +114,30 @@
          ((:label :for name) (:princ-safe question) ": ")
          ((:input :type type :name name))))))
   (:method ((query single-choice))
-    (with-slots (name question default alternatives) query
+    (with-slots (name question default alternatives radiop) query
       (assert (not (null alternatives)))
-      (html
-        (:div
-         ((:label :for name) (:princ-safe question) ": ")
-         ((:select :name name)
-          (dolist (alt alternatives)
-            (html
-              ((:option :if* (equal alt default) :selected "yes"
-                        :value alt)
-               (:princ-safe alt)))))))))
+      (if radiop
+          (html
+           (:div
+            (:p (:princ-safe question))
+            (dolist (alt alternatives)
+              (html
+               (:div
+                ((:input :value (if (consp alt) (cdr alt) alt)
+                         :if* (equal (if (consp alt) (cdr alt) alt) default)
+                         :checked "on"
+                         :type "radio" :name name))
+                " "
+                (:label (:princ (if (consp alt) (car alt) alt))))))))
+          (html
+           (:div
+            ((:label :for name) (:princ-safe question) ": ")
+            ((:select :name name)
+             (dolist (alt alternatives)
+               (html
+                ((:option :if* (equal alt default) :selected "yes"
+                          :value alt)
+                 (:princ-safe alt))))))))))
   (:method ((details details))
     (with-slots (summary text) details
       (html
