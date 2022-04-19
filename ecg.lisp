@@ -395,7 +395,7 @@ what they are looking for.")
 popular package that implements this kind of interaction."))
     (make-conditional
      :question "Enabled by default"
-     :comment "Enable LSP support by default in programming buffers"
+     :comment "Enable completion by narrowing"
      :code "(vertico-mode t)"
      :inverted t)
     (make-conditional
