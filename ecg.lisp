@@ -375,7 +375,7 @@ disabled."
    (make-conditional
     :question "Disable splash screen?"
     :comment "Disable the scroll bars"
-    :code "(scroll-bar-mode -1)")
+    :code "(setq inhibit-startup-screen t)")
 
    (make-subsection "User Interface")
 
