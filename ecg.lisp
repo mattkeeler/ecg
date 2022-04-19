@@ -85,19 +85,19 @@
 (defstruct choice-option
   text value code image version)
 (defstruct (elpa-package
-             (:constructor make-elpa-package
-                           (pkg-name generic-name archive
-                                     &optional prelude &rest options
-                                     &aux (url (ecase archive
-                                                 ((gnu-elpa)
-                                                  (format nil "https://elpa.gnu.org/packages/~a.html" pkg-name))
-                                                 ((nongnu-elpa)
-                                                  (format nil "https://elpa.nongnu.org/nongnu/~a.html" pkg-name)))))))
+            (:constructor make-elpa-package
+                (pkg-name generic-name archive
+                 &optional prelude &rest options
+                 &aux (url (ecase archive
+                             ((gnu-elpa)
+                              (format nil "https://elpa.gnu.org/packages/~a.html" pkg-name))
+                             ((nongnu-elpa)
+                              (format nil "https://elpa.nongnu.org/nongnu/~a.html" pkg-name)))))))
   pkg-name generic-name (name (next-name)) url prelude options)
 (defstruct (builtin-package
-             (:constructor make-builtin-package
-                           (pkg-name generic-name
-                                     &optional prelude &rest options)))
+            (:constructor make-builtin-package
+                (pkg-name generic-name
+                 &optional prelude &rest options)))
   pkg-name generic-name (name (next-name)) prelude options)
 
 (defgeneric generate-form (entry)
@@ -110,9 +110,9 @@
   (:method ((query query))
     (with-slots (name question type) query
       (html
-       (:div
-        ((:label :for name) (:princ-safe question) ": ")
-        ((:input :type type :name name))))))
+        (:div
+         ((:label :for name) (:princ-safe question) ": ")
+         ((:input :type type :name name))))))
   (:method ((query single-choice))
     (with-slots (name question default alternatives) query
       (assert (not (null alternatives)))
@@ -128,66 +128,66 @@
   (:method ((details details))
     (with-slots (summary text) details
       (html
-       (:details
-        (:summary (:princ-safe summary))
-        (:princ text)))))
+        (:details
+         (:summary (:princ-safe summary))
+         (:princ text)))))
   (:method ((conditional conditional))
     (with-slots (name question inverted) conditional
       (html
-       ((:input :type "checkbox" :name name
-                :if* inverted :checked "on"))
-       " " ((:label :for name) (:princ-safe question))
-       :br)))
+        ((:input :type "checkbox" :name name
+                 :if* inverted :checked "on"))
+        " " ((:label :for name) (:princ-safe question))
+        :br)))
   (:method ((choice choice))
     (with-slots (question name options) choice
       (when question
         (html (:p (:princ-safe question))))
       (html
-       ((:ul :class "choice")
-        (assert (not (null options)))
-        (dolist (option options)
-          (with-slots (text value image version) option
-            (html
-             (:li
-              ((:input :type "radio"
-                       :name name
-                       :value value))
-              " "
-              ((:label :for name :title (format nil "Requires Emacs ~A" version))
-               (:princ-safe text))
-              (when image
-                (html ((:img :src image))))))))))))
+        ((:ul :class "choice")
+         (assert (not (null options)))
+         (dolist (option options)
+           (with-slots (text value image version) option
+             (html
+               (:li
+                ((:input :type "radio"
+                         :name name
+                         :value value))
+                " "
+                ((:label :for name :title (format nil "Requires Emacs ~A" version))
+                 (:princ-safe text))
+                (when image
+                  (html ((:img :src image))))))))))))
   (:method ((fn function))
     (declare (ignore fn)))
   (:method ((package elpa-package))
     (with-slots (pkg-name generic-name name url prelude options) package
       (html
-       ((:div :class "package")
-        ((:span :class "package-name") "Package "
-         (:q ((:a :href url)  (:tt (:princ-safe pkg-name)))))
-        (:h4 (:princ-safe generic-name))
-        (dolist (option (ensure-list prelude))
-          (generate-form option))
-        ((:input :type "checkbox" :name name :class "cond")) " "
-        ((:label :for name) "Add this package?")
+        ((:div :class "package")
+         ((:span :class "package-name") "Package "
+          (:q ((:a :href url)  (:tt (:princ-safe pkg-name)))))
+         (:h4 (:princ-safe generic-name))
+         (dolist (option (ensure-list prelude))
+           (generate-form option))
+         ((:input :type "checkbox" :name name :class "cond")) " "
+         ((:label :for name) "Add this package?")
 
-        ((:blockquote :class "dependent")
-         (dolist (option options)
-           (generate-form option)))))))
+         ((:blockquote :class "dependent")
+          (dolist (option options)
+            (generate-form option)))))))
   (:method ((package builtin-package))
     (with-slots (pkg-name generic-name name prelude options) package
       (html
-       ((:div :class "package")
-        ((:span :class "package-name") "Built-In Package "
-         (:q (:tt (:princ-safe pkg-name))))
-        (:h4 (:princ-safe generic-name))
-        (dolist (option (ensure-list prelude))
-          (generate-form option))
-        ((:input :type "checkbox" :name name :class "cond")) " "
-        ((:label :for name) "Add this package?")
-        ((:blockquote :class "dependent")
-         (dolist (option options)
-           (generate-form option))))))))
+        ((:div :class "package")
+         ((:span :class "package-name") "Built-In Package "
+          (:q (:tt (:princ-safe pkg-name))))
+         (:h4 (:princ-safe generic-name))
+         (dolist (option (ensure-list prelude))
+           (generate-form option))
+         ((:input :type "checkbox" :name name :class "cond")) " "
+         ((:label :for name) "Add this package?")
+         ((:blockquote :class "dependent")
+          (dolist (option options)
+            (generate-form option))))))))
 
 (defgeneric generate-conf (entry req)
   (:method ((conditional conditional) req)
@@ -250,7 +250,7 @@ will be assumed that you have Emacs 27.1  installed (currently most widely avail
 version)."
    (make-single-choice
     :question "What Emacs version do you have installed"
-               :name "emacs-version"
+    :name "emacs-version"
     :alternatives '("29.0"
                     "28.1"
                     "27.2" "27.1"
@@ -326,19 +326,19 @@ with Emacs, that you might be interested in."
             :version version
             :image (format nil "/images/~a.svg" theme)))))
 
-  ;; FIXME: There should be a way to extend this query to make use of
-  ;; `document.fonts' [0] if Javascript is available.
-  ;;
-  ;; [0] https://developer.mozilla.org/en-US/docs/Web/API/Document/fonts
-  (make-query :question "What Font do you want to use by default?"
-              :name "default-font-face"
-              :type "text")
-  (lambda (req)
-    (let ((font (request-query-value "default-font-face" req)))
-      (when (string/= font "")
-        (format t "~2%;; Set default font face
+   ;; FIXME: There should be a way to extend this query to make use of
+   ;; `document.fonts' [0] if Javascript is available.
+   ;;
+   ;; [0] https://developer.mozilla.org/en-US/docs/Web/API/Document/fonts
+   (make-query :question "What Font do you want to use by default?"
+               :name "default-font-face"
+               :type "text")
+   (lambda (req)
+     (let ((font (request-query-value "default-font-face" req)))
+       (when (string/= font "")
+         (format t "~2%;; Set default font face
 (set-face-attribute 'default nil :font \"~A\")"
-                font))))
+                 font))))
 
    "By default Emacs has a few GUI elements enabled.  Some prefer to disable these,
 as they do everything using the keyboard.  Beginners should think twice about doing
@@ -386,7 +386,7 @@ popular package that implements this kind of interaction."))
      :code "(vertico-mode t)"
      :inverted t)
     (make-conditional
-    :question "Display completions horizontally (which saves space),
+     :question "Display completions horizontally (which saves space),
 instead of vertically (which might be easier to read)?"
      :comment "Enable horizontal completion"
      :code "(vertico-flat-mode t)")
@@ -582,7 +582,7 @@ adding this package might be convenient."))
           " can be used for
 anything from managing apartments, writing manuals, literate programs
 or executing code like a programming notebook.")
-    (par "While Org Mode is bundled in by default, you can decide
+     (par "While Org Mode is bundled in by default, you can decide
 to fetch a new newer version that what is provided by default by
 your Emacs installation."))
     (make-conditional
@@ -741,93 +741,93 @@ by Emacs."))
 
 (defun generate-form-page ()
   (html
-   (:html
-    (:head
-     (:title "Emacs Configuration Generator")
-     ((:meta :charset "utf-8"))
-     ((:meta :name "viewport"
-             :content "width=device-width"))
-     ((:link :rel "icon"
-             :type "image/x-icon"
-             :href "./images/favicon.ico"))
-     ((:link :rel "stylesheet"
-             :href "style.css")))
-    (:body
-     (:header
-      ((:img :src "images/emacs.gif" :class "right"))
-      (:h1 "Emacs Configuration Generator")
-      (:p "Some people claim that "
-          ((:a :href "https://www.gnu.org/software/emacs/")
-           "Emacs")
-          " is difficult to start with."
-          " The main problem is probably the "
-          (:q "chicken-and-egg")
-          " situation:  To make the most use of Emacs, you"
-          " probably need to understand Emacs (Lisp), but"
-          " to grok Emacs Lisp you pretty much neeed to"
-          " understand the fundamentals of Emacs.")
-      (:p "A common suggestion is to use " (:q "frameworks")
-          " or ready-made configurations that provide a layer of abstraction to
+    (:html
+      (:head
+       (:title "Emacs Configuration Generator")
+       ((:meta :charset "utf-8"))
+       ((:meta :name "viewport"
+               :content "width=device-width"))
+       ((:link :rel "icon"
+               :type "image/x-icon"
+               :href "./images/favicon.ico"))
+       ((:link :rel "stylesheet"
+               :href "style.css")))
+      (:body
+       (:header
+        ((:img :src "images/emacs.gif" :class "right"))
+        (:h1 "Emacs Configuration Generator")
+        (:p "Some people claim that "
+            ((:a :href "https://www.gnu.org/software/emacs/")
+             "Emacs")
+            " is difficult to start with."
+            " The main problem is probably the "
+            (:q "chicken-and-egg")
+            " situation:  To make the most use of Emacs, you"
+            " probably need to understand Emacs (Lisp), but"
+            " to grok Emacs Lisp you pretty much neeed to"
+            " understand the fundamentals of Emacs.")
+        (:p "A common suggestion is to use " (:q "frameworks")
+            " or ready-made configurations that provide a layer of abstraction to
 help set up common functionality.  This site is an attempt to approach
 the issue from a different standpoint, by having an interested user
 pick-and-choose what they would like to start with and provide a
 template to build on.  Note that you will be suggested a few packages
 that are downloaded over the internet, from the ELPA ("
-          (:q "Emacs Lisp package archive") ") repositories.")
-      (:blockquote
-       (:strong "Note:") "This site is still experimental, and
+            (:q "Emacs Lisp package archive") ") repositories.")
+        (:blockquote
+         (:strong "Note:") " This site is still experimental, and
 there is a lot more that can be done.  See "
-       ((:a :href "http://amodernist.com/texts/ecg.html") "this article")
-       " for more details.")
-      (:p "So if interested, fill out the form below and"
-          " have a configuration file generated.")
-      :hr)
-     (:main
-      ((:form :action "./generate" :method "POST")
-       (mapc #'generate-form *options*)
-       :br
-       ((:input :type "submit" :value "Make an init.el"))))
-     (:aside
-      :hr
-      (:h2 "Further links")
-      (:p "If you have no previous experience with Emacs,
+         ((:a :href "http://amodernist.com/texts/ecg.html") "this article")
+         " for more details.")
+        (:p "So if interested, fill out the form below and"
+            " have a configuration file generated.")
+        :hr)
+       (:main
+        ((:form :action "./generate" :method "POST")
+         (mapc #'generate-form *options*)
+         :br
+         ((:input :type "submit" :value "Make an init.el"))))
+       (:aside
+        :hr
+        (:h2 "Further links")
+        (:p "If you have no previous experience with Emacs,
 take your time to try out to built-in tutorial ("
-          (:kbd "C-h t" ) ").  To view the documentation
+            (:kbd "C-h t" ) ").  To view the documentation
 for a package use " (:kbd "C-h P" ) ". Here are a few more relevant
 links, that might be of use")
-      ((:ul :class "multicol")
-       (:li ((:a :href "https://www.gnu.org/software/emacs/")
-             "GNU Emacs homepage"))
-       (:li ((:a :href "https://www.gnu.org/software/emacs/tour/index.html")
-             "The Emacs tour"))
-       (:li ((:a :href "https://elpa.gnu.org/")
-             "GNU ELPA Package archive"))
-       (:li ((:a :href "https://elpa.nongnu.org/")
-             "NonGNU ELPA Package archive"))
-       (:li ((:a :href "https://www.gnu.org/software/emacs/manual/html_node/emacs/index.html")
-             "The GNU Emacs manual"))
-       (:li ((:a :href "https://www.gnu.org/software/emacs/manual/html_node/elisp/index.html")
-             "The Emacs Lisp reference manual"))
-       (:li ((:a :href "https://www.emacswiki.org/")
-             "EmacsWiki"))
-       (:li ((:a :href "https://mail.gnu.org/mailman/listinfo/help-gnu-emacs")
-             (:tt "help-gnu-emacs") " mailing list")))
-      (:p "Also consider joining the "
-          ((:a :href "https://www.emacswiki.org/emacs/EmacsChannel")
-           (:tt "#emacs"))
-          " channel on "
-          ((:a :href "https://libera.chat/") "Libera Chat") "."))
-     (:footer
-      ((:abbr :title "Emacs Configuration Generator") "ECG")
-      " was made by "
-      ((:a :href "https://www.emacswiki.org/emacs/PhilipKaludercic")
-       "Philip")
-      ", is developed on "
-      ((:a :href "https://git.sr.ht/~pkal/ecg") "Sourcehut")
-      " and is distributed under "
-      ((:a :href "https://www.gnu.org/licenses/agpl-3.0.en.html")
-       "AGPL 3.0")
-      ".")))))
+        ((:ul :class "multicol")
+         (:li ((:a :href "https://www.gnu.org/software/emacs/")
+               "GNU Emacs homepage"))
+         (:li ((:a :href "https://www.gnu.org/software/emacs/tour/index.html")
+               "The Emacs tour"))
+         (:li ((:a :href "https://elpa.gnu.org/")
+               "GNU ELPA Package archive"))
+         (:li ((:a :href "https://elpa.nongnu.org/")
+               "NonGNU ELPA Package archive"))
+         (:li ((:a :href "https://www.gnu.org/software/emacs/manual/html_node/emacs/index.html")
+               "The GNU Emacs manual"))
+         (:li ((:a :href "https://www.gnu.org/software/emacs/manual/html_node/elisp/index.html")
+               "The Emacs Lisp reference manual"))
+         (:li ((:a :href "https://www.emacswiki.org/")
+               "EmacsWiki"))
+         (:li ((:a :href "https://mail.gnu.org/mailman/listinfo/help-gnu-emacs")
+               (:tt "help-gnu-emacs") " mailing list")))
+        (:p "Also consider joining the "
+            ((:a :href "https://www.emacswiki.org/emacs/EmacsChannel")
+             (:tt "#emacs"))
+            " channel on "
+            ((:a :href "https://libera.chat/") "Libera Chat") "."))
+       (:footer
+        ((:abbr :title "Emacs Configuration Generator") "ECG")
+        " was made by "
+        ((:a :href "https://www.emacswiki.org/emacs/PhilipKaludercic")
+         "Philip")
+        ", is developed on "
+        ((:a :href "https://git.sr.ht/~pkal/ecg") "Sourcehut")
+        " and is distributed under "
+        ((:a :href "https://www.gnu.org/licenses/agpl-3.0.en.html")
+         "AGPL 3.0")
+        ".")))))
 
 (publish
  :function
@@ -846,8 +846,8 @@ links, that might be of use")
      (with-http-body (req ent)
        (let ((*standard-output* *html-stream*))
          (elisp-indent:with-indenting-output
-             (dolist (opt *options*)
-               (generate-conf opt req)))))))
+           (dolist (opt *options*)
+             (generate-conf opt req)))))))
  :content-type "text/plain"
  :path "/generate")
 
