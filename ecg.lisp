@@ -787,6 +787,11 @@ by Emacs."))
     :question "Remember what files were last opened?"
     :code "(recentf-mode t)"
     :inverted t)
+   (make-conditional
+    :question "Abbreviate all yes-or-no queries?"
+    ;; TODO: use `use-short-answers' for Emacs 28 or newer
+    :code "(defalias 'yes-or-no #'y-or-n-p)"
+    :inverted t)
 
    (lambda (req)
      (declare (ignore req))
