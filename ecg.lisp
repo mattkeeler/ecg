@@ -418,6 +418,13 @@ make use of narrowing completion.")
 read-file-name-completion-ignore-case t
 completion-ignore-case t)")
 
+   "Do you want Emacs to automatically add the closing parentheses,
+when you insert the opening ones?  This would also apply to brackets
+of all sorts, quotes and in some cases additional constructs depending
+on the programming language.  Note that if you are used to typing out
+the closing parenthesis, this shouldn't be an issue, as Emacs will just
+move over it if it were to be inserted."
+
    (make-conditional
     :question "Automatically pair parentheses?"
     :comment "Automatically pair parentheses"
