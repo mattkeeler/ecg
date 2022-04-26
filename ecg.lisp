@@ -772,7 +772,8 @@ by Emacs."))
      (format t "~2%;; Miscellaneous options"))
    (make-conditional
     :question "Guess the major mode from the file name?"
-    :code "(setq major-mode (lambda () ; guess major mode from file name
+    :code "(setq-default major-mode
+(lambda () ; guess major mode from file name
 (unless buffer-file-name
 (let ((buffer-file-name (buffer-name)))
 (set-auto-mode)))))"
