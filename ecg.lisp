@@ -692,6 +692,18 @@ be of use.")
      :code "(add-hook 'rcirc-mode-hook #'rcirc-omit-mode)"
      :inverted t))
 
+   (make-elpa-package
+    "editorconfig" "EditorConfig support" 'nongnu-elpa
+    (par "A popular method to ensure consistent formatting and
+indentation between editors is "
+         ((:a :href "https://editorconfig.org/") "EditorConfig")
+         ".  If you need to use this, add this package.")
+    (make-conditional
+     :question "Enabled by default?"
+     :comment "Enable EditorConfig "
+     :code "(editorconfig-mode t)"
+     :inverted t))
+
    (make-subsection "Text manipulation and navigation")
    "Since everything is just a text buffer in Emacs, general purpose
 utilities and commands have wide applicability.  This section suggests
