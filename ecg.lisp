@@ -517,7 +517,7 @@ features.")
      :comment "Message navigation bindings"
      :code "(with-eval-after-load 'flymake
 (define-key flymake-mode-map (kbd \"C-c n\") #'flymake-goto-next-error)
-(define-key flymake-mode-map (kbd \"C-c p\") #'flymake-goto-prevnext-error))"))
+(define-key flymake-mode-map (kbd \"C-c p\") #'flymake-goto-prev-error))"))
 
    (make-elpa-package
     "company" "Pop-up auto-completion" 'gnu-elpa
