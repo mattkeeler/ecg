@@ -505,7 +505,7 @@ use of this in Emacs, a package has to be installed.")
 features.")
     (make-conditional
      :question "Enabled by default when programming?"
-     :comment "Enable LSP support by default in programming buffers"
+     :comment "Enabled inline static analysis"
      :code "(add-hook 'prog-mode-hook #'flymake-mode)"
      :inverted t)
     (make-conditional
