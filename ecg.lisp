@@ -374,7 +374,7 @@ useful pointers.  If you are sure you don't need it anymore, it can be
 disabled."
    (make-conditional
     :question "Disable splash screen?"
-    :comment "Disable the scroll bars"
+    :comment "Disable splash screen"
     :code "(setq inhibit-startup-screen t)")
 
    (make-subsection "User Interface")
