@@ -230,7 +230,7 @@
       (dolist (option (ensure-list prelude))
         (generate-conf option req))
       (when (string= (request-query-value name req) "on")
-        (format t "~2%;; ~A~%(unless (package-installed-p '~A)
+        (format t "~2%;;; ~A~%(unless (package-installed-p '~A)
 (package-install '~:*~A))" generic-name pkg-name)
         (dolist (option options)
           (generate-conf option req)))))
@@ -239,7 +239,7 @@
       (dolist (option (ensure-list prelude))
         (generate-conf option req))
       (when (string= (request-query-value name req) "on")
-        (format t "~2%;; ~A" generic-name)
+        (format t "~2%;;; ~A" generic-name)
         (dolist (option options)
           (generate-conf option req))))))
 
