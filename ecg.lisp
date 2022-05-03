@@ -408,8 +408,8 @@ instead of vertically (which might be easier to read)?"
      :comment "Improve directory navigation"
      :code "(with-eval-after-load 'vertico
 (define-key vertico-map (kbd \"RET\") #'vertico-directory-enter)
-(define-key vertico-map (kbd \"DEL\") #'vertico-delete-word)
-(define-key vertico-map (kbd \"M-d\") #'vertico-delete-char))")
+(define-key vertico-map (kbd \"DEL\") #'vertico-directory-delete-word)
+(define-key vertico-map (kbd \"M-d\") #'vertico-directory-delete-char))")
     (make-elpa-package
      "consult" "Extended completion utilities" 'gnu-elpa
      (par "If you decide to use Vertico, " (:q "Consult") " might also
