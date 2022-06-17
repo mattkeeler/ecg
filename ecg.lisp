@@ -32,28 +32,16 @@
 
 (require "asdf")
 (eval-when (:compile-toplevel :load-toplevel :execute)
-  (asdf:load-system :aserve)
-  (asdf:load-system :alexandria)
+  (asdf:load-system :cl-who)
+  (asdf:load-system :hunchentoot)
   (load "elisp-indent.lisp"))
 
 (defpackage :emacs-configuration-generator
-  (:use :common-lisp :alexandria :net.aserve :net.html.generator)
+  (:use :common-lisp :alexandria)
   (:nicknames :ecg))
 (in-package :ecg)
 
 
-
-(eval-when (:compile-toplevel :load-toplevel :execute)
-  ;; TODO: Send a patch to AllegroServe to have these tags and mime
-  ;;       types available by default.  Some of these seem to have
-  ;;       already been updated, but not published?
-  (net.html.generator::def-std-html :header t nil)
-  (net.html.generator::def-std-html :main t nil)
-  (net.html.generator::def-std-html :aside t nil)
-  (net.html.generator::def-std-html :footer t nil)
-  (net.html.generator::def-std-html :details t nil)
-  (net.html.generator::def-std-html :summary t nil)
-  (setf (gethash "svg" *mime-types*) "image/svg+xml"))
 
 (declaim (ftype (function () string) next-name))
 (let ((counter 0))
@@ -71,6 +59,7 @@
 
 (defparameter *default-version* 27
   "Without any further information, what version do we assume?")
+
 (defun emacs-version (req)
   (let ((query (request-query-value "emacs-version" req)))
     (if (string= query "") *default-version* (parse-float query))))
@@ -169,7 +158,7 @@
                 ((:label :for name :title (format nil "Requires Emacs ~A" version))
                  (:princ-safe text))
                 (when image
-                  (html ((:img :src image))))))))))))
+                  (html ((:img :src image :loading "lazy"))))))))))))
   (:method ((fn function))
     (declare (ignore fn)))
   (:method ((package elpa-package))
