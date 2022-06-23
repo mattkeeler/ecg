@@ -721,7 +721,7 @@ the behaviour and user experience of other editors."
    (par (:em "An example:") " CUA (" (:q ((:a :href "https://en.wikipedia.org/wiki/IBM_Common_User_Access")
                                           "Common User Access"))
         ") are the conventions popularised by IBM in the 1980's, that
-are used by most other programmes.  Think of copying using " (:kbd "C-c") ", pasting using " (:kbd "C-z") ".")
+are used by most other programmes.  Think of copying using " (:kbd "Control+C") ", pasting using " (:kbd "Control+V") ".")
    (par "Emacs not only predates these conventions, but stands in
 conflict with the bindings by default.  An attempt at resolving this
 can be done using" (:tt "cua-mode")". If you find yourself struggling
