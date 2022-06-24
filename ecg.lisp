@@ -32,16 +32,28 @@
 
 (require "asdf")
 (eval-when (:compile-toplevel :load-toplevel :execute)
-  (asdf:load-system :cl-who)
-  (asdf:load-system :hunchentoot)
+  (asdf:load-system :aserve)
+  (asdf:load-system :alexandria)
   (load "elisp-indent.lisp"))
 
 (defpackage :emacs-configuration-generator
-  (:use :common-lisp :alexandria)
+  (:use :common-lisp :alexandria :net.aserve :net.html.generator)
   (:nicknames :ecg))
 (in-package :ecg)
 
 
+
+(eval-when (:compile-toplevel :load-toplevel :execute)
+  ;; TODO: Send a patch to AllegroServe to have these tags and mime
+  ;;       types available by default.  Some of these seem to have
+  ;;       already been updated, but not published?
+  (net.html.generator::def-std-html :header t nil)
+  (net.html.generator::def-std-html :main t nil)
+  (net.html.generator::def-std-html :aside t nil)
+  (net.html.generator::def-std-html :footer t nil)
+  (net.html.generator::def-std-html :details t nil)
+  (net.html.generator::def-std-html :summary t nil)
+  (setf (gethash "svg" *mime-types*) "image/svg+xml"))
 
 (declaim (ftype (function () string) next-name))
 (let ((counter 0))
