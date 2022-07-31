@@ -897,10 +897,7 @@ links, that might be of use")
             ((:a :href "https://libera.chat/") "Libera Chat") "."))
        (:footer
         ((:abbr :title "Emacs Configuration Generator") "ECG")
-        " was made by "
-        ((:a :href "https://www.emacswiki.org/emacs/PhilipKaludercic")
-         "Philip")
-        ", is developed on "
+        " is developed on "
         ((:a :href "https://git.sr.ht/~pkal/ecg") "Sourcehut")
         " and is distributed under "
         ((:a :href "https://www.gnu.org/licenses/agpl-3.0.en.html")
