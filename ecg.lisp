@@ -918,8 +918,5 @@ links, that might be of use")
       (dolist (opt *options*)
         (generate-conf opt)))))
 
-;; Finally evaluate `start' with the right arguments:
-;; 
-;; (hunchentoot:start *ecg-acceptor*)
-;;
-;; (setf hunchentoot:*catch-errors-p* nil)
+(defun start ()
+  (hunchentoot:start *ecg-acceptor*))
