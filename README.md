@@ -14,8 +14,7 @@ How to start
 
 Using [GNU Guix], you can start a server as follows:
 
-    guix shell --pure -CN -m manifest.scm -- \
-       sbcl --load ecg.lisp --eval "(start)"
+    guix shell --pure -CN -m manifest.scm -- sbcl --load ecg.lisp --eval "(ecg:start)"
 
 The server HTTP will now be listening for new requests on port 9095.
 
