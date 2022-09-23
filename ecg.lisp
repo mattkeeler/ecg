@@ -895,11 +895,13 @@ links, that might be of use")
            (:a :href "https://libera.chat/" "Libera Chat") "."))
       (:footer
        (:abbr :title "Emacs Configuration Generator" "ECG")
-       "is developed on "
+       " is "
+       (:a :href "https://www.fsf.org/about/what-is-free-software" "Free Software")
+       " and is available on "
        (:a :href "https://git.sr.ht/~pkal/ecg" "Sourcehut")
-       " and is distributed under "
+       " under the Terms and Conditions of the "
        (:a :href "https://www.gnu.org/licenses/agpl-3.0.en.html"
-           "AGPL 3.0")
+           "AGPL 3.0 License")
        ".")))))
 
 (defvar *ecg-acceptor* (make-instance 'hunchentoot:easy-acceptor :port 9095))
