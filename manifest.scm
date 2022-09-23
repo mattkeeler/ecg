@@ -2,4 +2,4 @@
 ;; You can store it in a file that you may then pass to any 'guix' command
 ;; that accepts a '--manifest' (or '-m') option.
 
-(specifications->manifest (list "sbcl" "cl-alexandria" "cl-who" "cl-hunchentoot"))
+(specifications->manifest (list "sbcl" "sbcl-alexandria" "sbcl-cl-who" "sbcl-hunchentoot"))
