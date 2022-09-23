@@ -251,10 +251,9 @@
        (with-html-output (*standard-output*) (:p ,@body)))))
 
 (defmacro ul (&rest items)
-  (let ((arg (gensym)))
-    `(with-output-to-string (*standard-output*)
-       (with-html-output (*standard-output*)
-         (:ul ,@(mapcar (curry #'list :li) items))))))
+  `(with-output-to-string (*standard-output*)
+     (with-html-output (*standard-output*)
+       (:ul ,@(mapcar (curry #'list :li) items)))))
 
 (defvar *options*
   (list
