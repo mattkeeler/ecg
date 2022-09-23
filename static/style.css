@@ -68,8 +68,10 @@ kbd, code, tt {
 
 /* Format the footer */
 footer {
-    text-align: right;
+    text-align: center;
     font-size: 80%;
+    background: rgba(0.5,0.5,0.5,0.1);
+    padding: 8px;
 }
 
 /* mobile version */
