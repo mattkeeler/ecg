@@ -882,8 +882,8 @@ links, that might be of use")
                      "NonGNU ELPA Package archive"))
             (:li (:a :href "https://www.gnu.org/software/emacs/manual/html_node/emacs/index.html"
                      "The GNU Emacs manual"))
-            (:li (:a :href "https://www.gnu.org/software/emacs/manual/html_node/elisp/index.html"
-                     "The Emacs Lisp reference manual"))
+            (:li (:a :href "https://sachachua.com/blog/category/emacs-news/"
+                     "Emacs News"))
             (:li (:a :href "https://www.emacswiki.org/"
                      "EmacsWiki"))
             (:li (:a :href "https://mail.gnu.org/mailman/listinfo/help-gnu-emacs"
