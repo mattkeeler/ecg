@@ -39,7 +39,8 @@
 
 (defpackage :emacs-configuration-generator
   (:use :common-lisp :alexandria :cl-who)
-  (:nicknames :ecg))
+  (:nicknames :ecg)
+  (:export #:start))
 (in-package :ecg)
 
 
