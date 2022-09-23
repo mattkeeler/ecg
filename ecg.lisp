@@ -246,9 +246,8 @@
 ;; List of options
 
 (defmacro par (&rest body)
-  (let ((arg (gensym)))
-    `(with-output-to-string (*standard-output*)
-       (with-html-output (*standard-output*) (:p ,@body)))))
+  `(with-output-to-string (*standard-output*)
+     (with-html-output (*standard-output*) (:p ,@body))))
 
 (defmacro ul (&rest items)
   `(with-output-to-string (*standard-output*)
