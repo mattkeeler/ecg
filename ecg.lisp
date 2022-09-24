@@ -303,7 +303,7 @@ with Emacs, that you might be interested in."
     :options
     (cons
      (make-choice-option
-      :text "Default"
+      :text "Default: The default, light colour scheme"
       :version 24
       :image "./static/images/default.svg")
      ;; Use this Elisp script to generate theme images:
@@ -313,27 +313,27 @@ with Emacs, that you might be interested in."
      ;;   (write-region (x-export-frames nil 'svg) nil
      ;;                              (format "%s.svg" theme))
      ;;   (disable-theme theme))
-     (loop :for (theme . version) :in
-           '(("adwaita" . 24)
-             ("deeper-blue" . 24)
-             ("dichromacy" . 24)
-             ("leuven" . 24)
-             ("leuven-dark" . 29)
-             ("light-blue" . 24)
-             ("manoj-dark" . 24)
-             ("misterioso" . 24)
-             ("modus-operandi" . 28)
-             ("modus-vivendi" . 28)
-             ("tango" . 24)
-             ("tango-dark" . 24)
-             ("tsdh-dark" . 24)
-             ("tsdh-light" . 24)
-             ("wheatgrass" . 24)
-             ("whiteboard" . 24)
-             ("wombat" . 24))
+     (loop :for (theme version description) :in
+           '(("adwaita" 24 "A colour scheme similar to the default theme of GNOME 3")
+             ("deeper-blue" 24 "A dark-blue colour scheme")
+             ("dichromacy" 24 "A colour scheme for red/green colour-blind users")
+             ("leuven" 24 "A light colour scheme with blue emphasis")
+             ("leuven-dark" 29 "A dark colour scheme with blue emphasis")
+             ("light-blue" 24 "A light-blue colour scheme")
+             ("manoj-dark" 24 "A dark, high-contract colour scheme")
+             ("misterioso" 24 "A dark, predominantly blue/cyan colour scheme")
+             ("modus-operandi" 28 "An flexible, accessible light theme (highly recommended)")
+             ("modus-vivendi" 28 "An flexible, accessible dark theme (highly recommended)")
+             ("tango" 24 "A light colour scheme using the Tango palette")
+             ("tango-dark" 24 "A dark colour scheme using the Tango palette")
+             ("tsdh-dark" 24 "A dark grey colour scheme")
+             ("tsdh-light" 24 "An alternative light colour scheme")
+             ("wheatgrass" 24 "A high-contract, dark colour scheme")
+             ("whiteboard" 24 "A light colour scheme inspired by whiteboards")
+             ("wombat" 24 "A darker, grey colour scheme"))
            :collect
            (make-choice-option
-            :text (string-capitalize (substitute #\Space #\- theme))
+            :text (format nil "~:(~A~): ~A" (substitute #\Space #\- theme) description)
             :value theme
             :code (format nil "(load-theme '~a t)" theme)
             :version version
