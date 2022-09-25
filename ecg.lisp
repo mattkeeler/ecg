@@ -196,7 +196,7 @@
               (dolist (option (ensure-list prelude))
                 (generate-form option))
               (:input :type "checkbox" :name name :class "cond") " "
-              (:label :for name "Add this package?")
+              (:label :for name "Use this package?")
               (:blockquote :class "dependent"
                            (dolist (option options)
                              (generate-form option))))))))
