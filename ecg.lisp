@@ -903,19 +903,19 @@ links, that might be of use")
            "AGPL 3.0 License")
        ".")))))
 
-(defvar *ecg-acceptor* (make-instance 'hunchentoot:easy-acceptor :port 9095))
-(setf (hunchentoot:acceptor-document-root *ecg-acceptor*) "./static")
+(defun start (&optional (port 9095))
+  (let ((acc (make-instance 'hunchentoot:easy-acceptor :port port)))
+    (setf (hunchentoot:acceptor-document-root acc) "./static")
 
-(hunchentoot:define-easy-handler (front-page :uri "/") ()
-  (with-output-to-string (*standard-output*)
-    (generate-form-page)))
+    (hunchentoot:define-easy-handler (front-page :uri "/") ()
+      (with-output-to-string (*standard-output*)
+        (generate-form-page)))
 
-(hunchentoot:define-easy-handler (generate :uri "/generate") ()
-  (setf (hunchentoot:content-type*) "text/plain")
-  (with-output-to-string (*standard-output*)
-    (elisp-indent:with-indenting-output
-      (dolist (opt *options*)
-        (generate-conf opt)))))
+    (hunchentoot:define-easy-handler (generate :uri "/generate") ()
+      (setf (hunchentoot:content-type*) "text/plain")
+      (with-output-to-string (*standard-output*)
+        (elisp-indent:with-indenting-output
+          (dolist (opt *options*)
+            (generate-conf opt)))))
 
-(defun start ()
-  (hunchentoot:start *ecg-acceptor*))
+    (hunchentoot:start acc)))
