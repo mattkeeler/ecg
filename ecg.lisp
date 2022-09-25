@@ -903,7 +903,7 @@ links, that might be of use")
            "AGPL 3.0 License")
        ".")))))
 
-(defun start (&optional (port 9095))
+(defun start (&key (port 9095) (reload t))
   (let ((acc (make-instance 'hunchentoot:easy-acceptor :port port)))
     (setf (hunchentoot:acceptor-document-root acc) "./static")
 
@@ -918,4 +918,9 @@ links, that might be of use")
           (dolist (opt *options*)
             (generate-conf opt)))))
 
-    (hunchentoot:start acc)))
+    (hunchentoot:start acc)
+
+    (when reload
+      (format *debug-io* "Press enter to reload the image, ^D to quit.~2%")
+      (loop while (read-line nil nil) do
+        (load "ecg.lisp" :print t :verbose t)))))
