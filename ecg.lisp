@@ -901,7 +901,7 @@ links, that might be of use")
            "AGPL 3.0 License")
        ".")))))
 
-(defun start (&key (port 9095) (reload t))
+(defun start (&key (port 9095) (reload nil))
   (let ((acc (make-instance 'hunchentoot:easy-acceptor :port port)))
     (setf (hunchentoot:acceptor-document-root acc) "./static")
 
