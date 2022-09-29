@@ -246,13 +246,11 @@
 ;; List of options
 
 (defmacro par (&rest body)
-  `(with-output-to-string (*standard-output*)
-     (with-html-output (*standard-output*) (:p ,@body))))
+  `(with-html-output-to-string (*standard-output*) (:p ,@body)))
 
 (defmacro ul (&rest items)
-  `(with-output-to-string (*standard-output*)
-     (with-html-output (*standard-output*)
-       (:ul ,@(mapcar (curry #'list :li) items)))))
+  `(with-html-output-to-string (*standard-output*)
+       (:ul ,@(mapcar (curry #'list :li) items))))
 
 (defvar *options*
   (list
@@ -815,7 +813,7 @@ by Emacs."))
 ;; Prepare the web server
 
 (defun generate-form-page ()
-  (with-html-output (*standard-output* nil :prologue t)
+  (with-html-output-to-string (*standard-output* nil :prologue t)
     (:html
      (:head
       (:title "Emacs Configuration Generator")
@@ -908,8 +906,7 @@ links, that might be of use")
     (setf (hunchentoot:acceptor-document-root acc) "./static")
 
     (hunchentoot:define-easy-handler (front-page :uri "/") ()
-      (with-output-to-string (*standard-output*)
-        (generate-form-page)))
+      (generate-form-page))
 
     (hunchentoot:define-easy-handler (generate :uri "/generate") ()
       (setf (hunchentoot:content-type*) "text/plain")
