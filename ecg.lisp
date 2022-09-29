@@ -518,19 +518,20 @@ features.")
 (define-key flymake-mode-map (kbd \"C-c p\") #'flymake-goto-prev-error))"))
 
    (make-elpa-package
-    "company" "Pop-up auto-completion" 'gnu-elpa
+    "corfu" "Pop-up completion" 'gnu-elpa
     (list
-     "Enable this if you like unprompted completion to be displayed
-in a little popup dialogue, while typing."
+     "Enable this if you want to have Emacs display completion in a little pop-up window."
      "Do not confuse this with a completion framework.  They are used
 for querying the user for information, this completes text in a buffer.")
     (make-conditional
      :question "Enabled by default when programming?"
-     :comment "Enable Company by default in programming buffers"
-     :code "(add-hook 'prog-mode-hook #'company-mode)"
+     :comment "Enable autocompletion by default in programming buffers"
+     :code "(add-hook 'prog-mode-hook #'corfu-mode)"
      :inverted t)
-    ;; TODO: Add more configuration options
-    )
+    (make-conditional
+     :question "Enable automatic, unprompted completion?"
+     :comment "Enable automatic completion."
+     :code "(setq corfu-auto t)"))
 
    (make-subsection "Version control")
 
