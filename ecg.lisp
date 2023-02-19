@@ -11,7 +11,7 @@
 
 ;;; License:
 
-;; Copyright (C) 2022  Philip Kaludercic
+;; Copyright (C) 2022, 2023  Philip Kaludercic
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU Affero General Public License as published by
@@ -601,7 +601,7 @@ others need external packages.")
    (make-subsection "LaTeX")
    (make-elpa-package
     "auctex" "LaTeX support" 'gnu-elpa
-    (par "Via " (:a :href "https://orgmode.org/" "AucTeX")
+    (par "Via " (:a :href "https://www.gnu.org/software/auctex/" "AucTeX")
          ", Emacs has good support for working with LaTeX,
 including help when inserting macros, quick math-mode input, automated
 building and viewing of documents and inline preview.")
