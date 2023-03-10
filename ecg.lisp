@@ -886,6 +886,12 @@ links, that might be of use")
                      "EmacsWiki"))
             (:li (:a :href "https://mail.gnu.org/mailman/listinfo/help-gnu-emacs"
                      (:tt "help-gnu-emacs") " mailing list")))
+       (:p "The "
+           (:em "An Introduction to Programming in Emacs Lisp")
+           "manual also has a section on "
+           (:a :href "https://www.gnu.org/software/emacs/manual/html_node/eintr/Emacs-Initialization.html"
+               (:q "Your .emacs File"))
+           " that is worth reading.")
        (:p "Also consider joining the "
            (:a :href "https://www.emacswiki.org/emacs/EmacsChannel"
                (:tt "#emacs"))
