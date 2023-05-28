@@ -965,7 +965,7 @@ links, that might be of use")
 
     (hunchentoot:define-easy-handler (generate :uri "/generate") ()
       (setf (hunchentoot:content-type*) "text/plain")
-      (let ((*standard-output* (hunchentoot:send-headers)))
+      (with-output-to-string (*standard-output*)
         (elisp-indent:with-indenting-output
           (dolist (opt *options*)
             (generate-conf opt)))))
