@@ -248,6 +248,10 @@
 (defmacro par (&rest body)
   `(with-html-output-to-string (*standard-output*) (:p ,@body)))
 
+(defmacro note (&rest body)
+  `(with-html-output-to-string (*standard-output*)
+     (:blockquote :class "note" (:strong "Note:") ,@body)))
+
 (defmacro ul (&rest items)
   `(with-html-output-to-string (*standard-output*)
        (:ul ,@(mapcar (curry #'list :li) items))))
@@ -704,6 +708,33 @@ indentation between editors is "
      :question "Enabled by default?"
      :comment "Enable EditorConfig "
      :code "(editorconfig-mode t)"
+     :inverted t))
+
+   (make-elpa-package
+    "eat" "In-Emacs Terminal Emulation" 'nongnu-elpa
+    (concatenate
+     'string
+     (par "As is so often the case with Emacs, while there is built-in terminal
+Emulator"
+          (:code term) ", there are alternative implementations that are developed
+independently and might provide interesting features (such as user
+options, performance, functionality, etc.) that might be of interest.
+One such example in the third-party terminal emulator EAT (Emulate a
+terminal).  If you find yourself using a terminal emulator a lot")
+     (note "While terminal emulation is available, a much richer way of
+interacting with your system might be directly in a shell in a regular
+buffer.  This is implemented by the " (:code "shell") " command.  The advantage
+of this approach is that you can interact and manipulate the shell
+history just like any other buffer."))
+    (make-conditional
+     :question "Close the terminal buffer when the shell terminates?"
+     :comment "Close the terminal buffer when the shell terminates."
+     :code "(setq eat-kill-buffer-on-exit t)"
+     :inverted t)
+    (make-conditional
+     :question "Enable mouse-support in the terminal?"
+     :comment "Enable mouse-support."
+     :code "(setq eat-enable-mouse t)"
      :inverted t))
 
    (make-subsection "Text manipulation and navigation")

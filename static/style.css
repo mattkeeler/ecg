@@ -19,6 +19,13 @@ kbd, code, tt {
     float: right;
 }
 
+/* Markup for comments that we would like to bring attention to */
+.note {
+    background: rgba(0.5,0.5,0.5,0.1);
+    font-style: oblique;
+    padding: 1em;
+}
+
 /* Only display images when a choice is selected (e.g. Screenshots) */
 .choice {
     list-style: none;
