@@ -720,7 +720,7 @@ indentation between editors is "
      'string
      (par "As is so often the case with Emacs, while there is built-in terminal
 Emulator"
-          (:code term) ", there are alternative implementations that are developed
+          (:code "term") ", there are alternative implementations that are developed
 independently and might provide interesting features (such as user
 options, performance, functionality, etc.) that might be of interest.
 One such example in the third-party terminal emulator EAT (Emulate a
