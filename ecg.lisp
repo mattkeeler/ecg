@@ -49,8 +49,7 @@
 
 (defvar *name-counter* 0)
 (defun next-name ()
-  (prog1 (format nil "id-~d" *name-counter*)
-    (incf *name-counter*)))
+  (format nil "id-~d" (incf *name-counter*)))
 
 ;; Based on a post by Peter Norvig in response to
 ;; https://groups.google.com/g/comp.lang.lisp/c/-W1FeuHq0DI
