@@ -586,6 +586,7 @@ others need external packages.")
 
    (make-elpa-package "ada-mode" "Ada Support" 'gnu-elpa)
    (make-elpa-package "clojure-mode" "Clojure Support" 'nongnu-elpa)
+   (make-elpa-package "proof-general" "Coq Support" 'nongnu-elpa)
    (make-elpa-package "csharp-mode" "C# Support" 'gnu-elpa)
    (make-elpa-package "d-mode" "D Support" 'nongnu-elpa)
    (make-elpa-package "elixir-mode" "Elixir Support" 'nongnu-elpa)
