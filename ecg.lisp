@@ -499,7 +499,11 @@ use of this in Emacs, a package has to be installed.")
     (make-conditional
      :question "Enabled by default when programming?"
      :comment "Enable LSP support by default in programming buffers"
-     :code "(add-hook 'prog-mode-hook #'eglot-ensure)"))
+     :code "(add-hook 'prog-mode-hook #'eglot-ensure)")
+    (make-conditional
+     :question "Add an alias to enable LSP support?"
+     :comment "Create a memorable alias for `eglot-ensure'."
+     :code "(defalias 'start-lsp-server #'eglot)"))
 
    (make-builtin-package
     "flymake" "Inline static analysis"
