@@ -936,7 +936,7 @@ links, that might be of use")
                      (:tt "help-gnu-emacs") " mailing list")))
        (:p "The "
            (:em "An Introduction to Programming in Emacs Lisp")
-           "manual also has a section on "
+           " manual also has a section on "
            (:a :href "https://www.gnu.org/software/emacs/manual/html_node/eintr/Emacs-Initialization.html"
                (:q "Your .emacs File"))
            " that is worth reading.")
