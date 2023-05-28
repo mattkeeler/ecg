@@ -746,18 +746,28 @@ with Emacs bindings, enabling this might help overcome your initial difficulties
 
    (make-elpa-package
     "evil" "Vim Emulation" 'nongnu-elpa
-    (par "The child of the beast, "
+    (par "If you have previous experience with "
          (:a :href "https://www.vim.org/" "Vim")
-         ", another popular editor is often
-mistakenly used instead of Emacs.  Some have sadly gotten used to the
-sinful ways, and prefer the " (:q "modal")
-         " approach to Emacs default bindings.  If you too are affected by
-this curse, this package might help.")
+         ", you might find that this emulation package could help
+with transitioning to Emacs.  Note that as a full Emulation layer over
+Emacs, it might shadow other functionality inside of Emacs.  Resolving
+these issues will require additional configuration, if you want to
+stick with full emulation.  Also note, if you are just interested in
+vi-level emulation, emacs already has a built-in package called "
+         (:q "viper") " that will take care of that.")
     (make-conditional
      :question "Enabled by default?"
      :comment "Enable Vim emulation"
-     :code "(evil-mode t)"
-     :inverted t))
+     :code "(evil-mode t)")
+    (make-conditional
+     :question "Enabled by default when programming?"
+     :comment "Enable Vim emulation in programming buffers"
+     :code "(add-hook 'prog-mode-hook #'evil-local-mode)"
+     :inverted t)
+    (make-conditional
+     :question "Start in Emacs state"
+     :comment "Enable Vim emulation"
+     :code "(setq evil-default-state 'emacs)"))
 
    (make-elpa-package
     "brief" "Brief Emulation" 'gnu-elpa
