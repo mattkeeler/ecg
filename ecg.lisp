@@ -724,7 +724,8 @@ Emulator"
 independently and might provide interesting features (such as user
 options, performance, functionality, etc.) that might be of interest.
 One such example in the third-party terminal emulator EAT (Emulate a
-terminal).  If you find yourself using a terminal emulator a lot")
+terminal).  If you find yourself using a terminal emulator a lot,
+consider using this package.")
      (note "While terminal emulation is available, a much richer way of
 interacting with your system might be directly in a shell in a regular
 buffer.  This is implemented by the " (:code "shell") " command.  The advantage
