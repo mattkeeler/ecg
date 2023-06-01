@@ -91,6 +91,9 @@
                  &optional prelude &rest options)))
   pkg-name generic-name (name (next-name)) prelude options)
 
+(defun slugify (title)
+  (substitute #\- #\space (map 'string #'char-downcase title)))
+
 (defgeneric generate-form (entry)
   (:method ((sec section))
     (with-html-output (*standard-output*)
@@ -176,7 +179,7 @@
          (:span :class "package-name"
                 "Package "
                 (:q (:a :href url  (:tt (esc pkg-name)))))
-         (:h4 (esc generic-name))
+         (:h4 :title (slugify generic-name) (esc generic-name))
          (dolist (option (ensure-list prelude))
            (generate-form option))
          (:input :type "checkbox" :name name :class "cond") " "
@@ -191,7 +194,7 @@
         (:div :class "package"
               (:span :class "package-name" "Built-In Package "
                      (:q (:tt (esc pkg-name))))
-              (:h4 (esc generic-name))
+              (:h4 :title (slugify generic-name) (esc generic-name))
               (dolist (option (ensure-list prelude))
                 (generate-form option))
               (:input :type "checkbox" :name name :class "cond") " "
