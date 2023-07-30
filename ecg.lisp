@@ -904,9 +904,12 @@ that are downloaded over the internet, from the ELPA ("
            (:q "Emacs Lisp package archive") ") repositories.")
        (:blockquote :class "note"
         (:strong "Note:") " This site is still experimental, and
-there is a lot more that can be done.  See "
+there is a lot more that can be done.  Any and all feedback (issues,
+ideas, criticisms, etc.) are always very appreciated!  See "
         (:a :href "https://amodernist.com/texts/ecg.html" "this article")
-        " for more details.")
+        " for more details, or just send a message to my "
+        (:a :href "https://lists.sr.ht/~pkal/public-inbox" "public inbox")
+        ".")
        (:p "So if interested, fill out the form below and"
            " have a configuration file generated.")
        (:hr))
