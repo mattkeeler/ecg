@@ -14,6 +14,16 @@ kbd, code, tt {
     font-family: monospace, monospace;
 }
 
+/* Format keybindings characteristically */
+kbd {
+    background: whitesmoke;
+    box-shadow: 0 1px silver;
+    border: 1px solid silver;
+    border-radius: 4px;
+    padding: 2px;
+    font-size: smaller;		/* because of the padding */
+}
+
 /* Utility class for right-align elements (e.g. Emacs logo) */
 .right {
     float: right;
