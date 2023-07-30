@@ -249,7 +249,7 @@
 
 (defmacro note (&rest body)
   `(with-html-output-to-string (*standard-output*)
-     (:blockquote :class "note" (:strong "Note:") ,@body)))
+     (:blockquote :class "note" (:strong "Note: ") ,@body)))
 
 (defmacro ul (&rest items)
   `(with-html-output-to-string (*standard-output*)
