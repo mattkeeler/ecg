@@ -385,9 +385,14 @@ disabled."
    (make-elpa-package
     "vertico" "Completion framework" 'gnu-elpa
     (list
+     (par "When using Emacs, you will frequently find that you will
+be queried information like what file to open, what buffer to switch to,
+a command to execute, etc.  This is done using the " (:q "minibuffer")
+", a section at the bottom of the Emacs frame.  Depending in the kind of
+input, Emacs can provide context-sensitive help to complete partial input.")
      (par "Emacs default completion behaves similar to "
           (:a :href "https://www.gnu.org/s/bash/" "Bash")
-          ", in that it first attempts to expand a string
+          ", in that on pressing " (:kbd "TAB") " it first attempts to expand a string
 up until an unambiguous point, then pops up a list of possible
 completions.  A popular alternative to this " (:q "expanding")
           "approach is " (:q "interactive narrowing") ", that is to say
