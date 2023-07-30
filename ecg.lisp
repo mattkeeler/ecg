@@ -946,7 +946,7 @@ links, that might be of use")
            (:a :href "https://www.gnu.org/software/emacs/manual/html_node/eintr/Emacs-Initialization.html"
                (:q "Your .emacs File"))
            " that is worth reading.")
-       (:p "Also consider joining the "
+       (:p "Also consider joining the IRC channel "
            (:a :href "https://www.emacswiki.org/emacs/EmacsChannel"
                (:tt "#emacs"))
            " channel on "
