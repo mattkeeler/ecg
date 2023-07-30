@@ -265,7 +265,7 @@ version)."
    (make-single-choice
     :question "What Emacs version do you have installed"
     :name "emacs-version"
-    :alternatives '("29.0"
+    :alternatives '("29.1"
                     "28.1" "28.2"
                     "27.2" "27.1"
                     "26.3" "26.2" "26.1"
