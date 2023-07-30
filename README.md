@@ -2,7 +2,8 @@ Emacs Configuration Generator
 =============================
 
 Find here the source for an Emacs configuration generator website.  It
-is written in Common Lisp, and was tested using [SBCL].
+is written in Common Lisp, and was tested using [SBCL], but is known
+to work fine with other Lisp implementations as well.
 
 A live instance ought to be available here: <https://emacs.amodernist.com/>.
 
