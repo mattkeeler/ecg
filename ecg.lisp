@@ -512,7 +512,12 @@ use of this in Emacs, a package has to be installed.")
    (make-builtin-package
     "flymake" "Inline static analysis"
     (list
-     "To indicates static analysis messages on the fly, use this."
+     "To indicates static analysis messages on the fly, enabled this.  Note that
+this will just enable the user-interfacing front-end, to display error messages.
+Depending on the language mode, you might just get syntax errors highlighted in
+a buffer, or when combined with a LSP client (see below) it can also provide
+semantic warnings.  In some cases you might not see any warnings, in which case
+there would appear to be no back-end providing the information."
      "Note that this package is built-in but can be updated to add new
 features.")
     (make-conditional
