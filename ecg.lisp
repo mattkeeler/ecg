@@ -619,6 +619,17 @@ others need external packages.")
    (make-elpa-package "swift-mode" "Swift Support" 'nongnu-elpa)
    (make-elpa-package "typescript-mode" "Typescript Support" 'nongnu-elpa)
    (make-elpa-package "yaml-mode" "YAML Support" 'nongnu-elpa)
+   (make-elpa-package
+    "sweeprolog" "SWI-Prolog Support" 'nongnu-elpa
+    (par "While Emacs has Prolog support built-in, this package provides
+further integration for recent versions of SWI-Prolog, configuring
+auto-completion, jump-to-definition, on-the-fly-error-checking, etc.
+next to the usual stuff like loading files into a the top-level.")
+    (make-conditional
+     :question "Enabled by default?"
+     :comment "Use `sweeprolog-mode' instead of `prolog-mode'"
+     :code "(add-to-list 'auto-mode-alist '(\"\\.plt?\\'\"  . sweeprolog-mode))"
+     :inverted t))
 
    (make-section "Writing")
 
