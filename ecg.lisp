@@ -1,17 +1,12 @@
 ;; ecg.lisp --- Emacs Configuration Generator
 
+;; Copyright (C) 2022, 2023, 2024  Philip Kaludercic
+
 ;; URL: https://git.sr.ht/~pkal/ecg
 ;; Author: Philip Kaludercic <philipk@posteo.net>
 ;; Version: 0.1
 
-;;; Commentary:
-
-;; This script implements a simple web server, that provides a form to
-;; generate a custom Emacs configuration.
-
 ;;; License:
-
-;; Copyright (C) 2022, 2023  Philip Kaludercic
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU Affero General Public License as published by
@@ -25,6 +20,11 @@
 
 ;; You should have received a copy of the GNU Affero General Public License
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;; This script implements a simple web server, that provides a form to
+;; generate a custom Emacs configuration.
 
 ;;; Code:
 
