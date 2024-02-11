@@ -28,7 +28,7 @@
 
 ;;; Code:
 
-(declaim (optimize (speed 3) (space 3) (safety 0) (debug 1)))
+(declaim (optimize (speed 0) (space 0) (safety 0) (debug 3)))
 
 (require "asdf")
 (eval-when (:compile-toplevel :load-toplevel :execute)
@@ -275,7 +275,7 @@ version)."
                     "26.3" "26.2" "26.1"
                     "25.3" "25.2" "25.1"
                     "24.5" "24.4" "24.3")
-    :default "27.1")
+    :default "28.1")
    (lambda ()
      (format t ";;; Personal configuration -*- lexical-binding: t -*-")
      (format t "~2%;; Save the contents of this file under ~A"
