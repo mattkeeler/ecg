@@ -979,6 +979,8 @@ links, that might be of use")
        (:a :href "https://www.fsf.org/about/what-is-free-software" "Free Software")
        " and is available on "
        (:a :href "https://git.sr.ht/~pkal/ecg" "Sourcehut")
+       " or "
+       (:a :href "https://codeberg.org/pkal/ecg" "Codeberg")
        " under the Terms and Conditions of the "
        (:a :href "https://www.gnu.org/licenses/agpl-3.0.en.html"
            "AGPL 3.0 License")

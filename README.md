@@ -26,10 +26,12 @@ Contact
 -------
 
 Questions, issues, complaints, comments, insults, patches, etc. should
-be sent to [public inbox].
+be sent to [public inbox].  The code is also mirrored on [Codeberg].
 
 [public inbox]:
     https://lists.sr.ht/~pkal/public-inbox
+[Codeberg]:
+	https://codeberg.org/pkal/ecg
 
 State of testing
 ----------------
