@@ -109,7 +109,7 @@
       (with-html-output (*standard-output*)
         (:div
          (:label :for name (esc question) ": ")
-         (:input :type type :name name)))))
+         (:input :type type :id name :name name)))))
   (:method ((query single-choice))
     (with-slots (name question default alternatives radiop) query
       (assert (not (null alternatives)))
@@ -122,9 +122,9 @@
                 (:div
                  (:input :value (if (consp alt) (cdr alt) alt)
                          :checked (equal (if (consp alt) (cdr alt) alt) default)
-                         :type "radio" :name name)
+                         :type "radio" :name name :id name)
                  " "
-                 (:label (str (if (consp alt) (car alt) alt))))))))
+                 (:label :for name (str (if (consp alt) (car alt) alt))))))))
           (with-html-output (*standard-output*)
             (:div
              (:label :for name (esc question) ": ")
@@ -145,7 +145,7 @@
   (:method ((conditional conditional))
     (with-slots (name question inverted) conditional
       (with-html-output (*standard-output*)
-        (:input :type "checkbox" :name name
+        (:input :type "checkbox" :name name :id name
                 :checked inverted)
         " " (:label :for name (esc question))
         :br)))
@@ -162,7 +162,7 @@
              (htm
               (:li
                (:input :type "radio"
-                       :name name
+                       :name name :id name
                        :value value)
                " "
                (:label :for name :title (format nil "Requires Emacs ~A" version)
@@ -182,7 +182,7 @@
          (:h4 :title (slugify generic-name) (esc generic-name))
          (dolist (option (ensure-list prelude))
            (generate-form option))
-         (:input :type "checkbox" :name name :class "cond") " "
+         (:input :type "checkbox" :name name :id name :class "cond") " "
          (:label :for name "Add this package?")
 
          (:blockquote :class "dependent"
@@ -197,7 +197,7 @@
               (:h4 :title (slugify generic-name) (esc generic-name))
               (dolist (option (ensure-list prelude))
                 (generate-form option))
-              (:input :type "checkbox" :name name :class "cond") " "
+              (:input :type "checkbox" :name name :id name :class "cond") " "
               (:label :for name "Use this package?")
               (:blockquote :class "dependent"
                            (dolist (option options)
