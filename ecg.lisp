@@ -813,7 +813,7 @@ with transitioning to Emacs.  Note that as a full Emulation layer over
 Emacs, it might shadow other functionality inside of Emacs.  Resolving
 these issues will require additional configuration, if you want to
 stick with full emulation.  Also note, if you are just interested in
-vi-level emulation, emacs already has a built-in package called "
+vi-level emulation, Emacs already has a built-in package called "
          (:q "viper") " that will take care of that.")
     (make-conditional
      :question "Enabled by default?"
