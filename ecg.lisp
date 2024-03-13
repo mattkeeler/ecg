@@ -59,7 +59,7 @@
     (multiple-value-bind (frac j) (parse-integer str :start (+ i 1))
       (+ integer (/ frac (expt 10 (- j i 1)))))))
 
-(defparameter *default-version* 27
+(defparameter *default-version* 28
   "Without any further information, what version do we assume?")
 
 (defun emacs-version ()
