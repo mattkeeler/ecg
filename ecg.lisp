@@ -263,7 +263,7 @@
    (make-section "General")
    "Some options might depend on the version of Emacs you have installed.
 If you know what version you will be using, set it here.  Otherwise it
-will be assumed that you have Emacs 27.1  installed (currently most widely available
+will be assumed that you have Emacs 28.1  installed (currently most widely available
 version)."
    (make-single-choice
     :question "What Emacs version do you have installed"
