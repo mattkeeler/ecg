@@ -117,14 +117,16 @@
           (with-html-output (*standard-output*)
             (:div
              (:p (esc question))
-             (dolist (alt alternatives)
-               (htm
-                (:div
-                 (:input :value (if (consp alt) (cdr alt) alt)
-                         :checked (equal (if (consp alt) (cdr alt) alt) default)
-                         :type "radio" :name name :id name)
-                 " "
-                 (:label :for name (str (if (consp alt) (car alt) alt))))))))
+             (let ((i 0))
+               (dolist (alt alternatives)
+                 (htm
+                  (:div
+                   (:input :value (if (consp alt) (cdr alt) alt)
+                           :checked (equal (if (consp alt) (cdr alt) alt) default)
+                           :type "radio" :name name :id (format nil "~s-~d" name i))
+                   " "
+                   (:label :for (format nil "~s-~d" name i) (str (if (consp alt) (car alt) alt)))))
+                 (incf i)))))
           (with-html-output (*standard-output*)
             (:div
              (:label :for name (esc question) ": ")
