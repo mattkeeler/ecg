@@ -159,19 +159,21 @@
         (:ul
          :class "choice"
          (assert (not (null options)))
-         (dolist (option options)
-           (with-slots (text value image version) option
-             (htm
-              (:li
-               (:input :type "radio"
-                       :name name :id name
-                       :value value)
-               " "
-               (:label :for name :title (format nil "Requires Emacs ~A" version)
-                       (esc text))
-               (when image
-                 (with-html-output (*standard-output*)
-                   (:img :src image :loading "lazy")))))))))))
+         (let ((i 0))
+           (dolist (option options)
+             (with-slots (text value image version) option
+               (htm
+                (:li
+                 (:input :type "radio"
+                         :name name :id (format nil "~s-~d" name i)
+                         :value value)
+                 " "
+                 (:label :for (format nil "~s-~d" name i) :title (format nil "Requires Emacs ~A" version)
+                         (esc text))
+                 (when image
+                   (with-html-output (*standard-output*)
+                     (:img :src image :loading "lazy"))))))
+             (incf i)))))))
   (:method ((fn function))
     (declare (ignore fn)))
   (:method ((package elpa-package))
