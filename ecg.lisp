@@ -652,11 +652,11 @@ building and viewing of documents and inline preview.")
     (make-conditional
      :question "Enabled LaTeX math support?"
      :comment "Enable LaTeX math support"
-     :code "(add-hook 'LaTeX-mode-map #'LaTeX-math-mode)")
+     :code "(add-hook 'LaTeX-mode-hook #'LaTeX-math-mode)")
     (make-conditional
      :question "Enabled reference managment?"
      :comment "Enable reference mangment"
-     :code "(add-hook 'LaTeX-mode-map #'reftex-mode)"))
+     :code "(add-hook 'LaTeX-mode-hook #'reftex-mode)"))
 
    (make-subsection "Markdown")
    (make-elpa-package
